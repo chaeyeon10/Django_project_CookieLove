@@ -24,10 +24,27 @@ function pauseAnimation(element){
     console.log(elem);
     elem.style.animation = "none";
     elem.style.animation = "btnPause 3s ease infinite";
-
     setCookieAni();
+    setTimeout(function(){
+        document.querySelector('.intro').style.animation = "introFadeout 3s forwards ease-in-out";
+        let timer = 5;
+        setInterval(function() {
+            document.querySelector('#waitingTime').innerHTML = timer;
+            timer -= 1
+            if(timer == 2) {
+                document.querySelector('#waitingTime').style.color = 'red';
+            }
+            if(timer == -1) {
+                location.href = "http://localhost:8000/youngkwon/introduction/";
+            }
+        }, 1000)
+    },3000);
 }
 
 function go(){
     pauseAnimation('#indexBtn')
+}
+
+function moveto_whoami() {
+    window.scroll(0, 800);
 }
